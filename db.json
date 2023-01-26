@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "title": "test 1",
+      "body": "publish",
+      "publish": true,
+      "createdAt": 1673253782932,
+      "id": 1
+    },
+    {
+      "title": "test 3",
+      "body": "three",
+      "publish": false,
+      "createdAt": 1673253799487,
+      "id": 3
+    },
+    {
+      "title": "test 5",
+      "body": "55",
+      "publish": false,
+      "createdAt": 1673253813924,
+      "id": 5
+    },
+    {
+      "title": "test 6",
+      "body": "six",
+      "publish": true,
+      "createdAt": 1673253820760,
+      "id": 6
+    },
+    {
+      "title": "sd",
+      "body": "af",
+      "publish": false,
+      "createdAt": 1673268477287,
+      "id": 7
+    }
+  ]
+}
