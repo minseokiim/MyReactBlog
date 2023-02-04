@@ -5,9 +5,12 @@ import { useHistory, useLocation } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Pagination from './Pagination';
 import propTypes from 'prop-types';
-import Toast from './Toast';
+import useToast from '../hooks/toast';
+//import { useSelector } from 'react-redux';
 
 const BlogList = ({ isAdmin }) => {
+  const [addToast] = useToast();
+
   const history = useHistory();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -18,8 +21,12 @@ const BlogList = ({ isAdmin }) => {
   const [numberOfPosts, setNumberOfPosts] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [searchText, setSearchText] = useState('');
-  const [toasts, setToasts] = useState([]);
+
   const limit = 5;
+
+  // const toasts1 = useSelector((state) => {
+  //   return state.toast.toasts;
+  // });
 
   useEffect(() => {
     setNumberOfPages(Math.ceil(numberOfPosts / limit));
@@ -63,9 +70,27 @@ const BlogList = ({ isAdmin }) => {
     getPosts(parseInt(pageParam) || 1);
   }, []);
 
-  const addToast = (toast) => {
-    setToasts((prev) => [...prev, toast]);
-  };
+  // const deleteToast = (id) => {
+  //   const filteredToasts = toasts.current.filter((toast) => {
+  //     return toast.id != id;
+  //   });
+
+  //   toasts.current = filteredToasts;
+  //   setToastRerender((prev) => !prev);
+  // };
+
+  // const addToast = (toast) => {
+  //   const id = uuidv4();
+  //   const toastWithId = {
+  //     ...toast,
+  //     id,
+  //   };
+  //   toasts.current = [...toasts.current, toastWithId];
+  //   setToastRerender((prev) => !prev);
+  //   setTimeout(() => {
+  //     deleteToast(id);
+  //   }, 5000);
+  // };
 
   const deleteBlog = (e, id) => {
     e.stopPropagation();
@@ -115,7 +140,6 @@ const BlogList = ({ isAdmin }) => {
 
   return (
     <div>
-      <Toast toasts={toasts} />
       <input
         type="text"
         placeholder="search..."
