@@ -1,4 +1,3 @@
-#실행
 //port 3000 충돌이라 db는 port 3001 => json-server --watch db.json --port 3001\
 npm start\
 npm run db
