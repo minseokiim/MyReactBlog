@@ -1,4 +1,7 @@
-* port 3000 충돌이라 => json-server --watch db.json --port 3001 <br/>
+## 실행
+<br/>
+
+port 3000 충돌이라 => json-server --watch db.json --port 3001 <br/>
 npm start<br/>
 npm run db
 
