@@ -1,13 +1,12 @@
-## 실행
-<br/>
+## 설명
+react로 블로그 만들기
 
+## 실행
 port 3000 충돌이라 => json-server --watch db.json --port 3001 <br/>
 npm start<br/>
 npm run db<br/><br/>
 
 ## 설명
-<br/>
-
 * 언어
 <table>
   <tr>
