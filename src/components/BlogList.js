@@ -1,26 +1,26 @@
-import axios from 'axios';
-import { useState, useEffect, useCallback } from 'react';
-import Card from '../components/Card';
-import { useHistory, useLocation } from 'react-router-dom';
-import LoadingSpinner from '../components/LoadingSpinner';
-import Pagination from './Pagination';
-import propTypes from 'prop-types';
-import useToast from '../hooks/toast';
+import axios from "axios";
+import { useState, useEffect, useCallback } from "react";
+import Card from "../components/Card";
+import { useHistory, useLocation } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
+import Pagination from "./Pagination";
+import propTypes from "prop-types";
+import useToast from "../hooks/toast";
 //import { useSelector } from 'react-redux';
 
 const BlogList = ({ isAdmin }) => {
-  const [addToast] = useToast();
+  const { addToast } = useToast();
 
   const history = useHistory();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const pageParam = params.get('page');
+  const pageParam = params.get("page");
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [numberOfPosts, setNumberOfPosts] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   const limit = 5;
 
@@ -43,8 +43,8 @@ const BlogList = ({ isAdmin }) => {
       let params = {
         _page: page,
         _limit: limit,
-        _sort: 'id',
-        _order: 'desc',
+        _sort: "id",
+        _order: "desc",
         title_like: searchText,
       };
 
@@ -57,7 +57,7 @@ const BlogList = ({ isAdmin }) => {
           params,
         })
         .then((res) => {
-          setNumberOfPosts(res.headers['x-total-count']);
+          setNumberOfPosts(res.headers["x-total-count"]);
           setPosts(res.data);
           setLoading(false);
         });
@@ -97,8 +97,8 @@ const BlogList = ({ isAdmin }) => {
     axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
       setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
       addToast({
-        text: 'Successfully deleted',
-        type: 'success',
+        text: "Successfully deleted",
+        type: "success",
       });
     });
   };
@@ -131,7 +131,7 @@ const BlogList = ({ isAdmin }) => {
   };
 
   const onSearch = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       history.push(`${location.pathname}?page=1`);
       setCurrentPage(1);
       getPosts(1);

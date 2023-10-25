@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import routes from './routes';
-import NavBar from './components/NavBar';
-import Toast from './components/Toast';
-import useToast from './hooks/toast';
-import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import routes from "./routes";
+import NavBar from "./components/NavBar";
+import Toast from "./components/Toast";
+import useToast from "./hooks/toast";
+import { useSelector } from "react-redux";
 
 function App() {
   const toasts = useSelector((state) => state.toast.toasts);
-  const [addToast, deleteToast] = useToast();
+  const { deleteToast } = useToast();
 
   return (
     <Router>
